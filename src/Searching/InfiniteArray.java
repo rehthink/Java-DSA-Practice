@@ -1,3 +1,5 @@
+package Searching;
+
 public class InfiniteArray {
     public static void main(String[] args) {
         int ar[] = {2,4,5,6,12,22,23,25};

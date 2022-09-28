@@ -1,3 +1,5 @@
+package Searching;
+
 public class firstAndLastPositionInSortedArray {
     public static void main(String[] args) {
 

@@ -1,3 +1,5 @@
+package Searching;
+
 import java.util.Arrays;
 
 public class SortedMatrix {

@@ -1,3 +1,5 @@
+package Searching;
+
 public class PeakIndexInMountainArray {
 
     //https://leetcode.com/problems/peak-index-in-a-mountain-array/
