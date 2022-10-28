@@ -1,0 +1,27 @@
+package SDE_Sheet.Arrays;
+
+import java.util.Arrays;
+
+public class RearrangeArrayInMaxAndMin {
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 4, 5, 6, 7};
+        rearrange(arr);
+        System.out.println(Arrays.toString(arr));
+    }
+
+    static void rearrange(int[] arr) {
+        int size = arr.length;
+        boolean flag = true;
+        int small = 0, large = size-1;
+        int[] temp = arr.clone();
+
+        for (int i = 0; i<size; i++) {
+            if (flag) {
+                arr[i] = temp[large--];
+            }else {
+                arr[i] = temp[small++];
+            }
+            flag = !flag;
+        }
+    }
+}
