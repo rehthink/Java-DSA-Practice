@@ -28,14 +28,13 @@ public class LL {
     //Reverse Iteratively
     //https://leetcode.com/problems/reverse-linked-list/description/
 
-    public Node reverseIt(Node head) {
-
-        if (head == null) {
-            return head;
+    public Node reverseIt(Node node) {
+        if (node == null) {
+            return null;
         }
 
         Node prev = null;
-        Node present = head;
+        Node present = node;
         Node next = present.next;
 
         while (present != null){
@@ -46,8 +45,8 @@ public class LL {
                 next =next.next;
             }
         }
-        head = prev;
-        return head;
+        node = prev;
+        return node;
     }
 
     //https://leetcode.com/problems/reverse-linked-list-ii/description/
@@ -143,9 +142,64 @@ public class LL {
     }
 
     //Middle Element of Linked List
-    public void middleElement() {
+    public Node middleElement(Node head) {
+        Node slow = head;
+        Node fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        return slow;
+    }
+
+    //Palindrome
+    //https://leetcode.com/problems/palindrome-linked-list/description/
+    public boolean isPalindrome(Node head) {
+        Node mid = middleElement(head);
+        Node headSecond = reverse(mid);
+        Node reverseHead = headSecond;
+
+        while (head != null && headSecond != null ) {
+            if(head.value != headSecond.value) {
+                return false;
+            }
+            head = head.next;
+            headSecond = headSecond.next;
+        }
+        reverse(reverseHead);
+
+        return true;
+    }
+
+    //Reorder List
+    // https://leetcode.com/problems/reorder-list/
+    public void reorderList(Node head) {
+        if (head == null || head.next == null) {
+            return;
+        }
+
+        Node mid = middleElement(head);
+        Node headSecond = reverseIt(mid);
+        Node headFirst = head;
+
+        //rearrange
+        while (headFirst !=null && headSecond != null) {
+            Node temp = headFirst.next;
+            headFirst.next = headSecond;
+            headFirst = temp;
+
+            temp = headSecond.next;
+            headSecond.next = headFirst;
+            headSecond = temp;
+        }
+
+        if (headFirst != null) {
+            headFirst.next = null;
+        }
 
     }
+
 
     public void insertFirst(int val) {
         Node node = new Node(val);
@@ -231,15 +285,25 @@ public class LL {
     public static void main(String[] args) {
         LL list = new LL();
         list.insertFirst(1);
+        list.insertFirst(2);
         list.insertFirst(3);
-        list.insertFirst(4);
-        list.insertFirst(9);
+        list.insertFirst(2);
+        list.insertFirst(1);
+        list.insertFirst(1);
         list.display();
 
+        //list.reverse(list.head);
 
-        list.reverse(list.head);
-        list.reverseBetween(list.head,1,3);
-        //list.reverseIt();
+        list.reverseIt(list.head);
         list.display();
+        //System.out.println(list.middleElement(list.head).value);
+ //       System.out.println(list.isPalindrome(list.head));
+
+//        list.reorderList(list.head);
+
+   //     list.display();
+        //list.reverseBetween(list.head,1,3);
+        //list.reverseIt(list.head);
+        //list.display();
     }
 }
