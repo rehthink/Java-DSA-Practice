@@ -4,6 +4,7 @@ public class Prime {
     public static void main(String[] args) {
 
         int n = 20;
+        System.out.println(isPrime(n));
         for (int i = 0; i < n ; i++) {
             System.out.println(i + " "+ isPrime(i));
         }

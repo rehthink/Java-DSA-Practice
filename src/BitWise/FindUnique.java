@@ -7,7 +7,6 @@ public class FindUnique {
     }
 
     //XOR of any number with 0, will give that number.
-
     private static int ans(int[] arr) {
         int unique = 0;
 
